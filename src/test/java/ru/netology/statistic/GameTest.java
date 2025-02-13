@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Map;
 
 class GameTest {
 
@@ -16,8 +17,8 @@ class GameTest {
         game.register(player1);
         game.register(player2);
 
-        List<Player> expected = List.of(player1, player2);
-        List<Player> actual = game.getPlayerList();
+        Map<String, Player> expected = Map.of(player1.getName(), player1, player2.getName(), player2);
+        Map<String, Player> actual = game.getPlayerMap();
 
         Assertions.assertEquals(expected, actual);
     }
@@ -25,7 +26,7 @@ class GameTest {
     @Test
     void register() {
         Game game = new Game();
-        Assertions.assertTrue(game.getPlayerList().isEmpty());
+        Assertions.assertTrue(game.getPlayerMap().isEmpty());
 
         Player player1 = new Player(1, "Petya", 2);
         Player player2 = new Player(2, "Ivan", 5);
@@ -33,8 +34,8 @@ class GameTest {
         game.register(player1);
         game.register(player2);
 
-        List<Player> expected = List.of(player1, player2);
-        List<Player> actual = game.getPlayerList();
+        Map<String, Player> expected = Map.of(player1.getName(), player1, player2.getName(), player2);
+        Map<String, Player> actual = game.getPlayerMap();
 
         Assertions.assertEquals(expected, actual);
     }

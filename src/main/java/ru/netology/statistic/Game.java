@@ -1,29 +1,24 @@
 package ru.netology.statistic;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Game {
-    private List<Player> playerList = new ArrayList<>();
+    private Map<String, Player> playerMap = new HashMap<>();
 
-    public List<Player> getPlayerList() {
-        return playerList;
+    public Map<String, Player> getPlayerMap() {
+        return playerMap;
     }
 
     public void register(Player player) {
-        playerList.add(player);
+        playerMap.put(player.getName(), player);
     }
 
     private Player findByName(String name) {
-        for (Player curPlayer : playerList) {
-            if (curPlayer.getName().equals(name)) {
-                return curPlayer;
-            }
-        }
-        return null;
+        return playerMap.get(name);
     }
 
-    public int round (String playerName1, String playerName2) {
+    public int round(String playerName1, String playerName2) {
         Player player1 = findByName(playerName1);
         Player player2 = findByName(playerName2);
         if (player1 == null) {
